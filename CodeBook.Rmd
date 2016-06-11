@@ -1,0 +1,42 @@
+a code book that describes the variables, 
+the data, and 
+any transformations or work 
+that you performed to clean up the data called CodeBook.md
+
+# Description of variables
+
+* path: Assigning the working directory to this variable
+* test_data: To read X_test data set to this variable
+* train_data: To read X_train data set to this variable
+* test_label: To read y_test data set to this variable
+* train_lable: To read y_train data set to this variable
+* test_subjects: To read the subject_test data set to this variable
+* train_subjects: To read the subject_train data set to this variable
+* dataSubject: Combining test_subjects and train_subjects row-wise, so that all subjects are in one data frame
+* dataFeatures: Combining test_data and train_data row-wise, so that all data are in one data frame
+* dataActivity: Combining test_label and train_label row-wise, so that all labels are in one data frame
+* names(dataSubject): Assigning name of a column as "Subject" to the data frame "dataSubject"
+* names(dataActivity): Assigning name of a column as "label" to the data frame "dataActivity"
+* datafeaturesnames: Reading all the features names to this variable 
+* names(dataFeatures): Assigning all the names read from the data frame "datafeaturesnames"
+* data: Preparing the dataframe using actual data "dataFeatures", "dataSubject" and "dataActivity" column-wise
+* labl: reading the activity_labels having the information like walking, sitting etc.,
+
+# Description of the Data
+
+The experiments have been carried out with a group of 30 volunteers within an age bracket of 19-48 years. Each person performed six activities (WALKING, WALKING_UPSTAIRS, WALKING_DOWNSTAIRS, SITTING, STANDING, LAYING) wearing a smartphone (Samsung Galaxy S II) on the waist. Using its embedded accelerometer and gyroscope, we captured 3-axial linear acceleration and 3-axial angular velocity at a constant rate of 50Hz. The experiments have been video-recorded to label the data manually. The obtained dataset has been randomly partitioned into two sets, where 70% of the volunteers was selected for generating the training data and 30% the test data. 
+
+The sensor signals (accelerometer and gyroscope) were pre-processed by applying noise filters and then sampled in fixed-width sliding windows of 2.56 sec and 50% overlap (128 readings/window). The sensor acceleration signal, which has gravitational and body motion components, was separated using a Butterworth low-pass filter into body acceleration and gravity. The gravitational force is assumed to have only low frequency components, therefore a filter with 0.3 Hz cutoff frequency was used. From each window, a vector of features was obtained by calculating variables from the time and frequency domain.
+
+# Transformation of the data
+* subdatafeaturesnames: Extracted the mean and std measurements from the data frame **data**
+* applying vertical lookup from the data frame **data** with **labl** data frame
+* replacing the following pattern of texts with appropriate names like
+    1) "t" with "time"
+    2) "Acc" with "Accelerometer"
+    3) "Gyro" with "Gyroscope"
+    4) "Mag" with "Magnitude"
+    5) "f" with "frequency"
+    6) "BodyBody" with "Body"
+* preparing the table with averages of all measurements by Subject and Labels
+* Finally writing the cleaned data into a csv format.  This is named as tidy data set
